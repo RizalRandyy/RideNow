@@ -6,6 +6,9 @@ $baseLink = ($currentPage == "manager/index.php") ? '' : '../';
 $menuItems = [
     ['Dashboard', 'manager/index.php', 'home.svg'],
     ['Motorcycles', 'motorcycle/read_motorcycle.php', 'motorcycle.svg'],
+    ['Booking', 'booking/read_booking.php', 'booking.svg'],
+
+
 
 ];
 

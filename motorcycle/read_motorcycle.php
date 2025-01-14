@@ -44,7 +44,7 @@ include '../components/head.php';
               <td><?= $data['availability'] ?></td>
               <td>
                 <div>
-                  <img src="../public/assets/uploads/images/motorcycles/<?= $data['photo'] ?>" width="150" height="150" alt="motorcycle-photo">
+                  <img src="../public/assets/uploads/images/motorcycles/<?= $data['photo'] ?>" width="100" height="100" alt="motorcycle-photo">
                 </div>
               </td>
               <td><a href="edit_motorcycle.php?id=<?= $data['motorcycle_id']?> " class="btn btn-warning btn-sm">Edit</a></td>
