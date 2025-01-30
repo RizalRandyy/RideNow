@@ -17,13 +17,8 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $title ?></title>
-    <!-- <?php if ($page == 'index') { ?>
-        <link rel="stylesheet" href="public/css/style.css">
-        <script src="public/js/sidebar.js"></script> -->
-    <!-- <?php } else { ?> -->
         <link rel="stylesheet" href="../public/css/style.css">
         <script src="../public/js/sidebar.js"></script>
-    <!-- <?php } ?> -->
 </head>
 
 <body>

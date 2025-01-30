@@ -9,15 +9,13 @@ if (isset($_POST['save'])) { // cek variable POST from FORM
     $create = mysqli_query($db_connection, $query);
 
     if ($create) {
-        // echo "<p> Pet added successfully! </p>";
         echo "<script>alert('Booking added Successfully!')</script>";
     } else {
-        // echo "<p> Pet added Failed! </p>";
         echo "<script>alert('Booking add Failed!')</script>";
     }
 }
 ?>
-<!-- <p><a href="../index.php">Kembali</a></p> -->
+
 <script>
     window.location.replace("../../index.php");
 </script>

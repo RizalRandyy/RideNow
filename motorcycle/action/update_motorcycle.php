@@ -20,7 +20,6 @@ if (isset($_POST['save'])) {
             description='$_POST[description]',
             type='$_POST[type]',
             price_per_day='$_POST[price_per_day]',
-            stock='$_POST[stock]',
             photo = '$photo'
             WHERE motorcycle_id='$_POST[motorcycle_id]'";
 

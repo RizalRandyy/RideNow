@@ -15,10 +15,8 @@ include '../components/head.php';
             <th>No</th>
             <th>Brand</th>
             <th>Name</th>
-            <th>Description</th>
             <th>Type</th>
             <th>Price/day</th>
-            <th>Stock</th>
             <th>Availability</th>
             <th>Photo</th>
             <th colspan="2">Action</th>
@@ -37,17 +35,15 @@ include '../components/head.php';
               <td><?= $i++ ?></td>
               <td><?= $data['brand'] ?></td>
               <td><?= $data['name'] ?></td>
-              <td><?= $data['description'] ?></td>
               <td><?= $data['type'] ?></td>
-              <td><?= $data['price_per_day'] ?></td>
-              <td><?= $data['stock'] ?></td>
-              <td><?= $data['availability'] ?></td>
+              <td><?php echo "Rp. " . number_format($data['price_per_day'], 2, ",", "."); ?></td>
+              <td><?php echo ($data['availability'] >= 1) ? "available" : "In use"; ?></td>
               <td>
                 <div>
                   <img src="../public/assets/uploads/images/motorcycles/<?= $data['photo'] ?>" width="100" height="100" alt="motorcycle-photo">
                 </div>
               </td>
-              <td><a href="edit_motorcycle.php?id=<?= $data['motorcycle_id']?> " class="btn btn-warning btn-sm">Edit</a></td>
+              <td><a href="edit_motorcycle.php?id=<?= $data['motorcycle_id'] ?> " class="btn btn-warning btn-sm">Edit</a></td>
               <td><a href="action/delete_motorcycle.php?id=<?= $data['motorcycle_id'] ?>" onclick="return confirm('Are you sure want to delete this motorcycle?')" class="btn btn-danger btn-sm">Delete</a></td>
             </tr>
           <?php endforeach ?>

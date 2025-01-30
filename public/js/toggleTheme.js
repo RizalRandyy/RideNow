@@ -1,13 +1,14 @@
 // Dark Mode
-const backgroundColorDarkMode = '#11111D';
-const textColorDarkMode = '#E9EDF3';
-const cardColorDarkMode = '#1C1C27';
+const backgroundDark = '#11111D';
+const textDarkMode = '#E9EDF3';
+const cardDarkMode = '#1C1C27';
 const hoverTableDarkMode = '#1C1C35';
 
 // Light Mode
-const backgroundColorLightMode = '#E9E9E9';
-const textColorLightMode = 'black';
-const cardColorLightMode = '#F5F5F5';
+const backgroundLight = '#E9E9E9';
+const textLightMode = 'black';
+const cardLightMode = '#F5F5F5';
+const sidebarLightMode = '#13111E';
 
 document.addEventListener('DOMContentLoaded', () => {
   const checkbox = document.getElementById('checkbox'); // Button toggle
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleWrapper = document.getElementById('toggle-wrapper');
   const activeElements = document.querySelectorAll('.sidebar-links .active');
   const sidebarLinks = document.querySelectorAll('.sidebar-links a');
+  const sidebarh1 = document.querySelectorAll('.sidebar-links li h1');
   const settingsDropdown = document.getElementById('settings-dropdown');
   const buttons = document.querySelectorAll('.btn');
   const hoverTables = document.querySelectorAll('.table tbody tr');
@@ -34,39 +36,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     checkbox.checked = true;
 
-    body.style.color = textColorDarkMode;
+    body.style.color = textDarkMode;
 
-    body.style.backgroundColor = backgroundColorDarkMode;
+    body.style.backgroundColor = backgroundDark;
 
     cards.forEach(card => {
-      card.style.backgroundColor = cardColorDarkMode;
+      card.style.backgroundColor = cardDarkMode;
     });
 
-    sidebar.style.backgroundColor = cardColorDarkMode;
+    sidebar.style.backgroundColor = cardDarkMode;
     links.forEach(link => {
-      link.style.color = textColorDarkMode;
+      link.style.color = textDarkMode;
     });
 
     svgs.forEach(svg => {
-      svg.style.fill = textColorDarkMode;
+      svg.style.fill = textDarkMode;
     });
 
-    toggleWrapper.style.backgroundColor = cardColorDarkMode;
+    toggleWrapper.style.backgroundColor = cardDarkMode;
 
     activeElements.forEach(element => {
-      element.style.color = cardColorDarkMode;
+      element.style.color = textLightMode;
     });
 
     sidebarLinks.forEach(link => {
       link.addEventListener('mouseover', () => {
         if (!link.classList.contains('active')) {
-          link.style.color = cardColorDarkMode;
+          link.style.color = cardDarkMode;
         }
       });
 
       link.addEventListener('mouseout', () => {
         if (!link.classList.contains('active')) {
-          link.style.color = textColorDarkMode;
+          link.style.color = textDarkMode;
         }
       });
     });
@@ -77,12 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       hoverTable.addEventListener('mouseout', () => {
-        hoverTable.style.backgroundColor = cardColorDarkMode;
+        hoverTable.style.backgroundColor = cardDarkMode;
       });
     });
 
 
-    settingsDropdown.style.backgroundColor = cardColorDarkMode;
+    settingsDropdown.style.backgroundColor = cardDarkMode;
 
     inputs.forEach(input => {
       input.style.backgroundColor = hoverTableDarkMode;
@@ -95,54 +97,62 @@ document.addEventListener('DOMContentLoaded', () => {
 
     checkbox.checked = false;
 
-    body.style.color = textColorLightMode;
+    body.style.color = textLightMode;
 
-    body.style.backgroundColor = backgroundColorLightMode;
+    body.style.backgroundColor = backgroundLight;
 
     cards.forEach(card => {
-      card.style.backgroundColor = cardColorLightMode;
+      card.style.backgroundColor = cardLightMode;
     });
 
-    sidebar.style.backgroundColor = cardColorLightMode;
+    sidebar.style.backgroundColor = sidebarLightMode;
     links.forEach(link => {
-      link.style.color = textColorLightMode;
+      link.style.color = textDarkMode;
     });
 
-    toggleWrapper.style.backgroundColor = backgroundColorLightMode;
+    sidebarh1.forEach(link => {
+      link.style.color = textDarkMode;
+    });
+
+    toggleWrapper.style.backgroundColor = backgroundLight;
+
+    activeElements.forEach(element => {
+      element.style.color = textLightMode;
+    });
 
     sidebarLinks.forEach(link => {
       link.addEventListener('mouseover', () => {
         if (!link.classList.contains('active')) {
-          link.style.color = textColorLightMode;
+          link.style.color = textLightMode;
         }
       });
 
       link.addEventListener('mouseout', () => {
         if (!link.classList.contains('active')) {
-          link.style.color = cardColorDarkMode;
+          link.style.color = textDarkMode;
         }
       });
     });
 
     hoverTables.forEach(hoverTable => {
       hoverTable.addEventListener('mouseover', () => {
-        hoverTable.style.backgroundColor = textColorDarkMode;
+        hoverTable.style.backgroundColor = textDarkMode;
       });
 
       hoverTable.addEventListener('mouseout', () => {
-        hoverTable.style.backgroundColor = cardColorLightMode;
+        hoverTable.style.backgroundColor = cardLightMode;
       });
     });
 
-    settingsDropdown.style.backgroundColor = cardColorLightMode;
+    settingsDropdown.style.backgroundColor = sidebarLightMode;
 
     buttons.forEach(button => {
-      button.style.color = textColorDarkMode;
+      button.style.color = textDarkMode;
     });
 
     inputs.forEach(input => {
       input.style.backgroundColor = 'white';
-      input.style.color = textColorLightMode;
+      input.style.color = textLightMode;
     });
 
     closeBtnSidebar.style.color = 'black';
@@ -153,28 +163,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // Dark Mode
     if (checkbox.checked) {
 
-      body.style.color = textColorDarkMode;
+      body.style.color = textDarkMode;
 
-      body.style.backgroundColor = backgroundColorDarkMode;
+      body.style.backgroundColor = backgroundDark;
 
       hoverTables.forEach(hoverTable => {
-        hoverTable.style.backgroundColor = cardColorDarkMode; // Default warna untuk dark mode
+        hoverTable.style.backgroundColor = cardDarkMode; // Default warna untuk dark mode
       });
 
       cards.forEach(card => {
-        card.style.backgroundColor = cardColorDarkMode;
+        card.style.backgroundColor = cardDarkMode;
       });
 
-      sidebar.style.backgroundColor = cardColorDarkMode;
+      sidebar.style.backgroundColor = cardDarkMode;
 
       links.forEach(link => {
-        link.style.color = textColorDarkMode;
+        link.style.color = textDarkMode;
       });
 
-      toggleWrapper.style.backgroundColor = cardColorDarkMode;
+      toggleWrapper.style.backgroundColor = cardDarkMode;
 
       activeElements.forEach(element => {
-        element.style.color = cardColorDarkMode;
+        element.style.color = cardDarkMode;
       });
 
       hoverTables.forEach(hoverTable => {
@@ -183,25 +193,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         hoverTable.addEventListener('mouseout', () => {
-          hoverTable.style.backgroundColor = cardColorDarkMode;
+          hoverTable.style.backgroundColor = cardDarkMode;
         });
       });
 
       sidebarLinks.forEach(link => {
         link.addEventListener('mouseover', () => {
           if (!link.classList.contains('active')) {
-            link.style.color = cardColorDarkMode;
+            link.style.color = cardDarkMode;
           }
         });
 
         link.addEventListener('mouseout', () => {
           if (!link.classList.contains('active')) {
-            link.style.color = cardColorLightMode;
+            link.style.color = cardLightMode;
           }
         });
       });
 
-      settingsDropdown.style.backgroundColor = cardColorDarkMode;
+      settingsDropdown.style.backgroundColor = cardDarkMode;
 
       inputs.forEach(input => {
         input.style.backgroundColor = hoverTableDarkMode;
@@ -214,56 +224,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } else { // Light Mode
 
-      body.style.color = textColorLightMode;
+      checkbox.checked = false;
 
-      hoverTables.forEach(hoverTable => {
-        hoverTable.style.backgroundColor = cardColorLightMode; // Default warna untuk light mode
-      });
+      body.style.color = textLightMode;
 
-      body.style.backgroundColor = backgroundColorLightMode;
+      body.style.backgroundColor = backgroundLight;
+
       cards.forEach(card => {
-        card.style.backgroundColor = cardColorLightMode;
+        card.style.backgroundColor = cardLightMode;
       });
 
-      sidebar.style.backgroundColor = cardColorLightMode;
+      sidebar.style.backgroundColor = sidebarLightMode;
       links.forEach(link => {
-        link.style.color = textColorLightMode;
+        link.style.color = textDarkMode;
       });
-      toggleWrapper.style.backgroundColor = backgroundColorLightMode;
+
+      sidebarh1.forEach(link => {
+        link.style.color = textDarkMode;
+      });
+
+      toggleWrapper.style.backgroundColor = backgroundLight;
+
+      activeElements.forEach(element => {
+        element.style.color = textLightMode;
+      });
 
       sidebarLinks.forEach(link => {
         link.addEventListener('mouseover', () => {
           if (!link.classList.contains('active')) {
-            link.style.color = textColorLightMode;
+            link.style.color = textLightMode;
           }
         });
 
         link.addEventListener('mouseout', () => {
           if (!link.classList.contains('active')) {
-            link.style.color = cardColorDarkMode;
+            link.style.color = textDarkMode;
           }
         });
       });
 
-      settingsDropdown.style.backgroundColor = cardColorLightMode;
-
-      buttons.forEach(button => {
-        button.style.color = textColorDarkMode;
+      hoverTables.forEach(hoverTable => {
+        hoverTable.style.backgroundColor = cardLightMode; // Default warna untuk dark mode
       });
 
       hoverTables.forEach(hoverTable => {
         hoverTable.addEventListener('mouseover', () => {
-          hoverTable.style.backgroundColor = textColorDarkMode;
+          hoverTable.style.backgroundColor = textDarkMode;
         });
 
         hoverTable.addEventListener('mouseout', () => {
-          hoverTable.style.backgroundColor = cardColorLightMode;
+          hoverTable.style.backgroundColor = cardLightMode;
         });
+      });
+
+      settingsDropdown.style.backgroundColor = sidebarLightMode;
+
+      buttons.forEach(button => {
+        button.style.color = textDarkMode;
       });
 
       inputs.forEach(input => {
         input.style.backgroundColor = 'white';
-        input.style.color = textColorLightMode;
+        input.style.color = textLightMode;
       });
 
       closeBtnSidebar.style.color = 'black';

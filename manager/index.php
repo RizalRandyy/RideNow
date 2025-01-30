@@ -4,6 +4,38 @@ $currentPage = 'index.php';
 $title = 'Dashboard';
 include '../components/head.php';
 
+include '../connection.php';
+$query = "SELECT 'total_employee' AS label, COUNT(*) AS value FROM users WHERE role='admin'
+    UNION ALL
+    SELECT 'total_confirmed_booking' AS label, COUNT(*) AS value FROM bookings WHERE status='Confirmed'
+    UNION ALL
+    SELECT 'total_booking' AS label, COUNT(*) AS value FROM bookings
+    UNION ALL
+    SELECT 'total_price' AS label, SUM(total_price) AS value FROM bookings
+    UNION ALL
+    SELECT 'user_id' AS label, COUNT(*) AS value FROM booking_confirmations WHERE user_id='{$_SESSION['user_id']}'
+";
+
+$result = mysqli_query($db_connection, $query);
+
+// Ambil hasil
+$data = [];
+while ($row = mysqli_fetch_assoc($result)) {
+  $data[$row['label']] = $row['value'];
+}
+
+// Assign ke variabel
+$total_employee = $data['total_employee'];
+$total_confirmed_bookings = $data['total_confirmed_booking'];
+$total_booking = $data['total_booking'];
+$total_price = $data['total_price'];
+$total_confirmed_by_me = $data['user_id'];
+
+$query_latest_customer = "SELECT customer_name FROM bookings ORDER BY booking_id DESC LIMIT 1";
+$result_latest_customer = mysqli_fetch_assoc(mysqli_query($db_connection, $query_latest_customer));
+$latest_customer_name = $result_latest_customer['customer_name'];
+
+
 ?>
 
 <div class="container">
@@ -48,10 +80,10 @@ include '../components/head.php';
       <div class="card-body">
         <?php if ($_SESSION['role'] != 'Manager') { ?>
           <div class="flex justify-between">
-            <p class="pb-2 font-bold">Approved</p>
+            <p class="pb-2 font-bold">Approved by Me</p>
             <?php include '../public/assets/images/logo/employee.svg' ?>
           </div>
-          <p class="pb-2 text-xl font-bold">20</p>
+          <p class="pb-2 text-xl font-bold"><?= $total_confirmed_by_me; ?></p>
         <?php } else { ?>
           <div class="flex justify-between">
             <p class="pb-2 font-bold">Top Employee</p>
@@ -68,36 +100,36 @@ include '../components/head.php';
 
     <!-- <div> -->
 
-      <div class="card w-100">
-        <div class="card-body">
-          <?php if ($_SESSION['role'] != 'Manager') { ?>
-            <div class="flex justify-between">
-              <p class="pb-2 font-bold">Latest Order</p>
-              <?php include '../public/assets/images/logo/latest-order.svg' ?>
-            </div>
-            <p class="pb-2 text-lg font-bold">Mr. Smith</p>
-          <?php } else { ?>
-            <div class="flex justify-between text-responsive">
-              <p class="pb-2 font-bold">Total Employee</p>
-              <?php include '../public/assets/images/logo/employees.svg' ?>
-            </div>
-            <p class="pb-2 text-xl font-bold text-responsive">10</p>
-          <?php } ?>
-        </div>
-      </div>
-
-      <div class="card w-100">
-        <div class="card-body">
+    <div class="card w-100">
+      <div class="card-body">
+        <?php if ($_SESSION['role'] != 'Manager') { ?>
+          <div class="flex justify-between">
+            <p class="pb-2 font-bold">Latest Order</p>
+            <?php include '../public/assets/images/logo/latest-order.svg' ?>
+          </div>
+          <p class="pb-2 text-lg font-bold"><?= $latest_customer_name; ?></p>
+        <?php } else { ?>
           <div class="flex justify-between text-responsive">
-            <p class="pb-2 font-bold">Total Orders</p>
-            <?php include '../public/assets/images/logo/order.svg' ?>
+            <p class="pb-2 font-bold">Total Employee</p>
+            <?php include '../public/assets/images/logo/employees.svg' ?>
           </div>
-          <p class="pb-2 text-xl font-bold text-responsive">201</p>
-          <div class="flex">
-            <p class="text-success responsive-hidden">&uarr; since last month</p>
-          </div>
+          <p class="pb-2 text-xl font-bold text-responsive"><?= $total_employee; ?></p>
+        <?php } ?>
+      </div>
+    </div>
+
+    <div class="card w-100">
+      <div class="card-body">
+        <div class="flex justify-between text-responsive">
+          <p class="pb-2 font-bold">Total Orders</p>
+          <?php include '../public/assets/images/logo/order.svg' ?>
+        </div>
+        <p class="pb-2 text-xl font-bold text-responsive"><?= $total_booking; ?></p>
+        <div class="flex">
+          <p class="text-success responsive-hidden">&uarr; since last month</p>
         </div>
       </div>
+    </div>
 
     <!-- </div> -->
 
@@ -107,7 +139,7 @@ include '../components/head.php';
           <p class="pb-2 font-bold">Total Approved</p>
           <?php include '../public/assets/images/logo/checkbox.svg' ?>
         </div>
-        <p class="pb-2 text-xl font-bold text-responsive">36</p>
+        <p class="pb-2 text-xl font-bold text-responsive"><?= $total_confirmed_bookings; ?></p>
       </div>
     </div>
     <div class="card w-100">
@@ -116,7 +148,7 @@ include '../components/head.php';
           <p class="pb-2 font-bold">Month Total</p>
           <?php include '../public/assets/images/logo/dollar.svg' ?>
         </div>
-        <p class="pb-2 text-xl font-bold text-responsive">5.000.000</p>
+        <p class="pb-2 text-lg font-bold text-responsive">Rp. <?= number_format($total_price, 2, ",", "."); ?></p>
         <div class="flex">
           <p class="text-success responsive-hidden">&uarr; since last month</p>
         </div>

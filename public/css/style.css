@@ -5,7 +5,7 @@
     --main-padding: 15px;
     --navbar-bg-color: #fff;
     --navbar-text-color: #000;
-    --sidebar-bg-color: #F5F5F5;
+    --sidebar-bg-color: #13111E;
     --sidebar-hover-bg-color: #E9ECF5;
     --sidebar-link-color: #fff;
     --btn-primary-bg-color: #007bff;
@@ -346,7 +346,7 @@ a {
 .settings-arrow img {
     position: absolute;
     margin-left: 200px;
-    margin-top: -43px;
+    margin-top: -47px;
     width: 25px;
 }
 
@@ -501,7 +501,7 @@ a {
 .table th {
     /* background-color: var(--table-bg-color); */
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 /* .table tbody tr:nth-child(odd) {
@@ -1726,6 +1726,48 @@ input#checkbox:checked+.button .dot {
     transition: all 0.3s;
     background-color: #aab7d9;
     will-change: left, background-color;
+}
+
+.btn-payment-paid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0DCAF0;
+    padding: 5px;
+    border-radius: 10px;
+    color: white;
+}
+
+.btn-payment-pending {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF6B3;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #992e00;
+    color: #6e2e09;
+}
+
+.btn-payment-confirmed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #198754;
+    padding: 5px;
+    border-radius: 10px;
+    color: white;
+}
+
+.report-period {
+    margin: 20px 0px;
+}
+
+.select {
+    padding-left: 5px;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
 }
 
 @keyframes deco-move {

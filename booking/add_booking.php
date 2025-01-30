@@ -98,6 +98,4 @@ $price_per_day = $motorcycle['price_per_day'];
             </form>
         </div>
     </div>
-</body>
-
-</html>
+    <?php include '../components/footer.php' ?>

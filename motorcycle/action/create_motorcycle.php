@@ -12,7 +12,7 @@ if (isset($_POST['save'])) {
     $photo = 'default.jpeg';
   }
 
-  $query = "INSERT INTO motorcycles (brand, name, description, type, price_per_day, stock, photo) VALUES ('$_POST[brand]', '$_POST[name]', '$_POST[description]', '$_POST[type]', '$_POST[price_per_day]', '$_POST[stock]', '$photo')";
+  $query = "INSERT INTO motorcycles (brand, name, description, type, price_per_day, photo) VALUES ('$_POST[brand]', '$_POST[name]', '$_POST[description]', '$_POST[type]', '$_POST[price_per_day]', '$photo')";
 
   $create = mysqli_query($db_connection, $query);
 
@@ -24,4 +24,6 @@ if (isset($_POST['save'])) {
 }
 ?>
 
-<script>window.location.href("../read_motorcycle.php")</script>
+<script>
+  window.location.replace("../read_motorcycle.php")
+</script>

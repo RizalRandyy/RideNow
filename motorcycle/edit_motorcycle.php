@@ -48,13 +48,8 @@ $data = mysqli_fetch_assoc($motorcycle);
         </div>
 
         <div class="form-group">
-          <label for="stock" class="form-label">Stock</label>
-          <input type="number" name="stock" required class="form-control" value="<?= $data['stock'] ?>">
-        </div>
-
-        <div class="form-group">
           <p class="font-semibold">Photo</p>
-          <img src="../public/assets/uploads/images/motorcycles/<?= $data['photo'] ?>" width="300" height="300" alt="user-photo">
+          <img src="../public/assets/uploads/images/motorcycles/<?= $data['photo'] ?>" width="300" height="300" alt="motorcycle-photo">
           <input type="file" name="new_photo" class="form-control">
         </div>
 

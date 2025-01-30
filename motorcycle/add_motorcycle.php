@@ -40,11 +40,6 @@ include '../components/head.php';
         </div>
 
         <div class="form-group">
-          <label for="stock" class="form-label">Stock</label>
-          <input type="number" name="stock" required class="form-control">
-        </div>
-
-        <div class="form-group">
           <label for="photo" class="form-label">Photo</label>
           <input type="file" name="photo" class="form-control">
         </div>

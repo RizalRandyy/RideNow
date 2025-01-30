@@ -7,7 +7,7 @@ $menuItems = [
     ['Dashboard', 'manager/index.php', 'home.svg'],
     ['Motorcycles', 'motorcycle/read_motorcycle.php', 'motorcycle.svg'],
     ['Booking', 'booking/read_booking.php', 'booking.svg'],
-
+    ['Report', 'report/read_report.php', 'report.svg'],
 
 
 ];
@@ -23,23 +23,23 @@ if ($_SESSION['role'] == 'Manager') {
         <li>
             <h1>Ridenow</h1>
         </li>
-        <?php foreach ($menuItems as [$title, $link, $icon]) : ?>
+        <?php foreach ($menuItems as [$title, $link, $icon]) : ?>   
             <?php $active = ($currentPage == basename($link)) ? 'active' : ''; ?>
             <li>
-                
+
                 <a href="<?= $baseLink . $link ?>" class="<?= $active ?>">
-                <?php include $logoPath . $icon ?> <?= $title ?>
+                    <?php include $logoPath . $icon ?> <?= $title ?>
                 </a>
             </li>
         <?php endforeach; ?>
 
         <hr>
 
-        <li class="dropdown">   
+        <li class="dropdown">
             <?php $active = ($currentPage == 'profile_settings.php' || $currentPage == 'edit_profile.php') ? 'active' : ''; ?>
             <a class="dropdown-toggle <?= $active ?>"><?php include $logoPath . 'gear.svg' ?>Settings</a>
             <div class="settings-arrow">
-                <img src="<?= $logoPath ?>arrowDown.png" alt="arrow logo">
+                <img src="<?= $logoPath ?>angle-down-solid.svg" alt="arrow logo">
             </div>
             <ul class="dropdown-menu" id="settings-dropdown">
                 <li><a href="/ridenow/user_settings/profile_settings.php?id=<?= $_SESSION['user_id'] ?>">Profile Settings</a></li>
@@ -58,8 +58,8 @@ if ($_SESSION['role'] == 'Manager') {
         dropdownToggle.addEventListener('click', () => {
             dropdownMenu.classList.toggle('show');
             arrowImage.src = dropdownMenu.classList.contains('show') ?
-                '<?= $logoPath ?>arrowUp.png' :
-                '<?= $logoPath ?>arrowDown.png';
+                '<?= $logoPath ?>angle-up-solid.svg' :
+                '<?= $logoPath ?>angle-down-solid.svg';
         });
     });
 </script>
